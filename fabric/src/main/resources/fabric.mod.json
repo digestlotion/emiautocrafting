@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "emiautocrafting",
+  "version": "${version}",
+  "name": "emiautocrafting",
+  "description": "Autocrafting similar to NEI but for EMI",
+  "authors": ["digestlotion"],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "GNU GPL v3.0",
+  "icon": "assets/emiautocrafting/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": ["com.example.emiautocrafting.fabric.EmiAutocraftingFabric"]
+  },
+  "mixins": ["emiautocrafting.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.14.21",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*",
+    "emi": ">=1.1.20"
+  }
+}
