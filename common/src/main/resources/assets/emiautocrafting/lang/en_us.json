@@ -1,3 +1,4 @@
 {
-  "key.emiautocrafting.craft_tree": "Craft Tree"
+  "key.emiautocrafting.craft_tree": "Craft Tree",
+  "tooltip.emiautocrafting.autocraft_tree": "Hold %s to autocraft the tree"
 }

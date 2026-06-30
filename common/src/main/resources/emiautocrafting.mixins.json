@@ -3,7 +3,7 @@
   "package": "com.example.emiautocrafting.mixin",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
-  "client": ["EmiScreenManagerMixin", "EmiConfigMixin"],
+  "client": ["EmiScreenManagerMixin", "EmiConfigMixin", "SyntheticMixin"],
   "mixins": [],
   "injectors": {
     "defaultRequire": 1
