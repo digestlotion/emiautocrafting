@@ -17,7 +17,7 @@ import net.minecraft.client.gui.tooltip.TooltipComponent;
 public class SyntheticMixin {
 
     @Inject(method = "getTooltip", at = @At(value = "RETURN"), cancellable = true)
-    private static void onGetTooltip(CallbackInfoReturnable<List<TooltipComponent>> cir) {
+    private void onGetTooltip(CallbackInfoReturnable<List<TooltipComponent>> cir) {
         cir.getReturnValue().add(
             TooltipComponent.of(
                 EmiPort.translatable(

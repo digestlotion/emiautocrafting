@@ -37,6 +37,7 @@ dependencies {
     shadowBundle project(path: ':common', configuration: 'transformProductionForge')
 
     modImplementation "dev.emi:emi-forge:$rootProject.emi_version"
+    modCompileOnly "maven.modrinth:XZNI4Cpy:XELeoPjZ"
 }
 
 processResources {
