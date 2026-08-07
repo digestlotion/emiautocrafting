@@ -18,13 +18,6 @@ public class SyntheticMixin {
 
     @Inject(method = "getTooltip", at = @At(value = "RETURN"), cancellable = true)
     private void onGetTooltip(CallbackInfoReturnable<List<TooltipComponent>> cir) {
-        cir.getReturnValue().add(
-            TooltipComponent.of(
-                EmiPort.translatable(
-                    "tooltip.emiautocrafting.autocraft_tree",
-                    EmiAutocraftingConfig.craftTree.getBindText()
-                ).asOrderedText()
-            )
-        );
+        cir.getReturnValue().add(TooltipComponent.of(EmiPort.translatable("tooltip.emiautocrafting.autocraft_tree", EmiAutocraftingConfig.craftTree.getBindText()).asOrderedText()));
     }
 }
