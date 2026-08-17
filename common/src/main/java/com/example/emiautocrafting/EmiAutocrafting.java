@@ -1,9 +1,9 @@
 package com.example.emiautocrafting;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.List;
 
 import com.tom.storagemod.gui.CraftingTerminalMenu;
 import com.tom.storagemod.gui.StorageTerminalMenu;
@@ -19,6 +19,8 @@ import dev.emi.emi.registry.EmiRecipeFiller;
 import dev.emi.emi.runtime.EmiFavorite.Synthetic;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -28,18 +30,22 @@ public final class EmiAutocrafting {
     public static final String MOD_ID = "emiautocrafting";
     public static boolean lock = false;
 
-    public static void craftTree(MaterialNode root) {
-        while (craftToNode(root));
+    public static boolean craftToNode(EmiIngredient ingredient) {
+        if (ingredient.equals(EmiIngredient.of(Ingredient.ofItems(Items.AIR), 1))) {
+            return craftToNode(BoM.tree.goal);
+        } else {
+            return craftToNode(getNode(ingredient));
+        }
     }
 
-    public static boolean craftToNode(MaterialNode root) {
+    private static boolean craftToNode(MaterialNode root) {
         if (lock) return false;
         lock = true;
         boolean crafted = false;
-        for (Map.Entry<EmiIngredient, MaterialNode> leaf : getTree(root).entrySet()) {
-            if (leaf.getValue().recipe == null || leaf.getValue().neededBatches <= 0 || !leaf.getValue().recipe.getCategory().getId().equals(Identifier.of("minecraft", "crafting"))) continue;
-            if (craftNode(leaf.getValue())) {
-                if (EmiAgnos.isModLoaded("toms_storage") && EmiApi.getHandledScreen().getScreenHandler() instanceof CraftingTerminalMenu menu) onTomsCraft(menu, leaf.getValue());
+        for (MaterialNode node : getTree(root)) {
+            if (node.recipe == null || node.neededBatches <= 0 || !node.recipe.getCategory().getId().equals(Identifier.of("minecraft", "crafting"))) continue;
+            if (craftNode(node)) {
+                if (EmiAgnos.isModLoaded("toms_storage") && EmiApi.getHandledScreen().getScreenHandler() instanceof CraftingTerminalMenu menu) onTomsCraft(menu, node);
                 crafted = true;
                 break;
             }
@@ -48,9 +54,12 @@ public final class EmiAutocrafting {
         return crafted;
     }
 
-    public static MaterialNode getNode(EmiIngredient ingredient) {
-        if (ingredient instanceof Synthetic synthetic) return getTree(BoM.tree.goal).get(synthetic.getStack());
-        return getTree(BoM.tree.goal).get(ingredient);
+    private static MaterialNode getNode(EmiIngredient ingredient) {
+        EmiIngredient target = ingredient instanceof Synthetic synthetic ? synthetic.getStack() : ingredient;
+        for (MaterialNode node : getTree(BoM.tree.goal)) {
+            if (node.ingredient.equals(target)) return node;
+        }
+        return null;
     }
 
     private static boolean craftNode(MaterialNode node) {
@@ -63,16 +72,22 @@ public final class EmiAutocrafting {
         return false;
     }
 
-    private static LinkedHashMap<EmiIngredient, MaterialNode> getTree(MaterialNode node) {
-        LinkedHashMap<EmiIngredient, MaterialNode> tree = new LinkedHashMap<>();
+    private static List<MaterialNode> getTree(MaterialNode node) {
+        List<MaterialNode> result = new ArrayList<>();
+        if (node == null) return result;
         Deque<MaterialNode> stack = new ArrayDeque<>();
         stack.push(node);
         while (!stack.isEmpty()) {
             MaterialNode n = stack.pop();
-            tree.put(n.ingredient, n);
-            if (n.children != null) n.children.forEach(stack::push);
+            if (n == null) continue;
+            result.add(n);
+            if (n.children != null) {
+                for (MaterialNode child : n.children) {
+                    if (child != null) stack.push(child);
+                }
+            }
         }
-        return tree;
+        return result;
     }
 
     private static void onTomsCraft(CraftingTerminalMenu menu, MaterialNode node) {
