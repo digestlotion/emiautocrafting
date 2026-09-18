@@ -24,11 +24,10 @@ subprojects {
     }
 
     repositories {
-        maven {
-    		name = "TerraformersMC"
-    		url = "https://maven.terraformersmc.com/"
+       	maven {
+    		name = "Sleeping Town"
+    		url = "https://repo.sleeping.town/"
     	}
-        maven { url = "https://api.modrinth.com/maven"}
     }
 
     dependencies {

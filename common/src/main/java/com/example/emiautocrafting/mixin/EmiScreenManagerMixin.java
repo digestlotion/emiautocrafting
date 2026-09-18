@@ -20,7 +20,7 @@ public class EmiScreenManagerMixin {
     @Inject(method = "stackInteraction", at = @At("HEAD"), cancellable = true)
     private static void onStackInteraction(EmiStackInteraction stack, Function<EmiBind, Boolean> function, CallbackInfoReturnable<Boolean> cir) {
         if (function.apply(EmiAutocraftingConfig.craftTree)) {
-            EmiAutocrafting.craftToNode(stack.getStack());
+            EmiAutocrafting.craftTree();
             cir.setReturnValue(true);
         }
     }
