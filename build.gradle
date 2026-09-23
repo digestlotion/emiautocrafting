@@ -28,6 +28,10 @@ subprojects {
     		name = "Sleeping Town"
     		url = "https://repo.sleeping.town/"
     	}
+        maven {
+            name = "Modrinth"
+            url = "https://api.modrinth.com/maven"
+        }
     }
 
     dependencies {
