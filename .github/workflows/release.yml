@@ -29,9 +29,7 @@ jobs:
 
           files: forge/build/libs/!(*-@(shadow|sources)).jar
 
-          dependencies: |
-            "emi@1.1.24+1.20.1+fabric(required){modrinth:fRiHVvU7}",
-            "fabric@0.81.1+1.19.4(required){modrinth:P7dR8mSH}"
+          dependencies: "emi@1.1.24+1.20.1+forge(required){modrinth:fRiHVvU7}"
 
           game-versions: 1.20.1
 
@@ -43,6 +41,8 @@ jobs:
 
           files: fabric/build/libs/!(*-@(shadow|sources)).jar
 
-          dependencies: "emi@1.1.24+1.20.1+forge(required){modrinth:fRiHVvU7}"
+          dependencies: |
+            "emi@1.1.24+1.20.1+fabric(required){modrinth:fRiHVvU7}",
+            "fabric@0.81.1+1.19.4(required){modrinth:P7dR8mSH}"
 
           game-versions: 1.20.1
