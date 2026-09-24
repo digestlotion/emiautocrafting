@@ -34,7 +34,7 @@ dependencies {
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 
     modImplementation "dev.emi:emi-fabric:$rootProject.emi_version"
-    modCompileOnly "maven.modrinth:XZNI4Cpy:nvqkBIsD"
+    modCompileOnly "maven.modrinth:XZNI4Cpy:nhRuPk5W"
 }
 
 processResources {

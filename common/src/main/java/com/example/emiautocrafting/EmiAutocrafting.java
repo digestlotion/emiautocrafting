@@ -2,8 +2,8 @@ package com.example.emiautocrafting;
 
 import java.util.ArrayDeque;
 
-import com.tom.storagemod.gui.CraftingTerminalMenu;
-import com.tom.storagemod.gui.StorageTerminalMenu.SlotAction;
+import com.tom.storagemod.menu.CraftingTerminalMenu;
+import com.tom.storagemod.util.TerminalSyncManager.SlotAction;
 
 import dev.emi.emi.api.EmiApi;
 import dev.emi.emi.api.recipe.handler.EmiCraftContext;

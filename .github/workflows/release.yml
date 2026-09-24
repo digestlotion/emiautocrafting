@@ -29,9 +29,9 @@ jobs:
 
           files: forge/build/libs/!(*-@(shadow|sources)).jar
 
-          dependencies: "emi@1.1.24+1.20.1+forge(required){modrinth:fRiHVvU7}"
+          dependencies: "emi@1.1.24+1.21.1+forge(required){modrinth:fRiHVvU7}"
 
-          game-versions: 1.20.1
+          game-versions: 1.21.1
 
       - uses: Kira-NT/mc-publish@v3
         with:
@@ -42,7 +42,7 @@ jobs:
           files: fabric/build/libs/!(*-@(shadow|sources)).jar
 
           dependencies: |
-            "emi@1.1.24+1.20.1+fabric(required){modrinth:fRiHVvU7}",
-            "fabric@0.81.1+1.19.4(required){modrinth:P7dR8mSH}"
+            "emi@1.1.24+1.21.1+fabric(required){modrinth:fRiHVvU7}",
+            "fabric@0.116.17+1.21.1(required){modrinth:P7dR8mSH}"
 
-          game-versions: 1.20.1
+          game-versions: 1.21.1
