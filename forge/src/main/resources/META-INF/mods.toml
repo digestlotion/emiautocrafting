@@ -1,7 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "[47,)"
 #issueTrackerURL = ""
-license = "GNU GPL v3.0"
+license = "MIT"
 
 [[mods]]
 modId = "emiautocrafting"

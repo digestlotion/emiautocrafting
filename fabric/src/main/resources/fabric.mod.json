@@ -9,7 +9,7 @@
     "homepage": "https://fabricmc.net/",
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
-  "license": "GNU GPL v3.0",
+  "license": "MIT",
   "icon": "assets/emiautocrafting/icon.png",
   "environment": "client",
   "entrypoints": {
