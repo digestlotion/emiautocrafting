@@ -1,7 +1,7 @@
 
 Default keybind is **N**
 
-Press once to craft the next recipe in the tree
+Press once to craft all possible recipes in the tree
 
 Hold to continuously craft the next
 

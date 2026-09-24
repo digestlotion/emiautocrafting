@@ -6,11 +6,11 @@
   "description": "Autocrafting similar to NEI but for EMI",
   "authors": ["digestlotion"],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://modrinth.com/mod/emiautocrafting",
+    "sources": "https://github.com/digestlotion/emiautocrafting"
   },
   "license": "MIT",
-  "icon": "assets/emiautocrafting/icon.png",
+  "icon": "icon.png",
   "environment": "client",
   "entrypoints": {
     "client": ["com.example.emiautocrafting.fabric.EmiAutocraftingFabric"]

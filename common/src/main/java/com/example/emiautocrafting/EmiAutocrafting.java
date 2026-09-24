@@ -40,12 +40,8 @@ public final class EmiAutocrafting {
                 if (EmiAgnos.isModLoaded("toms_storage") && EmiApi.getHandledScreen().getScreenHandler() instanceof CraftingTerminalMenu menu) {
                     MinecraftClient client = MinecraftClient.getInstance();
                     for (int i = 0; i < n.neededBatches; i++) {
-                        if (n.equals(BoM.tree.goal)) {
-                            client.interactionManager.clickSlot(menu.syncId, 0, 0, SlotActionType.PICKUP, client.player);
-                        } else {
-                            client.interactionManager.clickSlot(menu.syncId, 0, 0, SlotActionType.PICKUP, client.player);
-                            menu.sync.sendInteract(null, SlotAction.PULL_OR_PUSH_STACK, false);
-                        }
+                        client.interactionManager.clickSlot(menu.syncId, 0, 0, SlotActionType.PICKUP, client.player);
+                        if (!n.equals(BoM.tree.goal)) menu.sync.sendInteract(null, SlotAction.PULL_OR_PUSH_STACK, false);
                     }
                 }
                 BoM.tree.recalculate();
